@@ -7,7 +7,9 @@ import { Link } from 'react-router-dom';
 const NavBar = () => {
   const navigation = [
     { name: 'Home', href: '/', current: false },
-    { name: 'Name', href: '/', current: false },
+    { name: 'Photos', href: '/', current: false },
+    { name: 'Illustrations', href: '/', current: false },
+    { name: 'Videos', href: '/', current: false },
     // { name: 'Projects', href: '/', current: false },
     // { name: 'Calendar', href: '/', current: false },
   ]
@@ -16,7 +18,7 @@ const NavBar = () => {
     return classes.filter(Boolean).join(' ')
   }
   return (
-    <Fragment>
+    <>
       <Disclosure as="nav" className="bg-gray-800 sticky top-0 z-50">
         {({ open }) => (
           <>
@@ -35,18 +37,15 @@ const NavBar = () => {
                 </div>
                 <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                   <div className="flex-shrink-0 flex items-center">
-                    <img
+                    {/* <img
                       className="block lg:hidden h-8 w-auto"
                       src="https://i.ibb.co/nw7WTT1/image.png"
                       alt="logo"
-                    />
-                    <h6 className='text-green-400'>pix</h6>&nbsp;&nbsp;
+                    /> */}
+                    <h6 className='text-green-400 text-4xl font-bold'>Pixel</h6>
                     <div className="hidden lg:block h-8 w-auto flex items-center text-white">
-                      <img
-                        className="hidden lg:block h-8 w-auto"
-                        src="https://i.ibb.co/nw7WTT1/image.png"
-                        alt="logo"
-                      />
+                      
+                       {/* <h6 className='text-green-400 text-4xl font-bold'>Pixel</h6> */}
                     </div>
                   </div>
                   <div className="hidden sm:block sm:ml-6">
@@ -104,7 +103,7 @@ const NavBar = () => {
                             <Menu.Item>
                               {({ active }) => (
                                 <a
-                                  href="https://im-asif.web.app/"
+                                  href="https://fervent-haibt-9fc6ee.netlify.app/"
                                   className={classNames(
                                     active ? 'bg-gray-100' : '',
                                     'block px-4 py-2 text-sm text-gray-700'
@@ -117,7 +116,7 @@ const NavBar = () => {
                             <Menu.Item>
                               {({ active }) => (
                                 <a
-                                  href="https://www.linkedin.com/in/asif-estiak/"
+                                  href="https://www.linkedin.com/in/faysal-khan-47aa8710a/"
                                   target="_blank"
                                   rel="noreferrer"
                                   className={classNames(
@@ -132,7 +131,7 @@ const NavBar = () => {
                             <Menu.Item>
                               {({ active }) => (
                                 <a
-                                  href="https://github.com/asif-ae/"
+                                  href="https://github.com/khanfaysal"
                                   target="_blank"
                                   rel="noreferrer"
                                   className={classNames(
@@ -173,7 +172,7 @@ const NavBar = () => {
           </>
         )}
       </Disclosure>
-    </Fragment>
+    </>
   );
 };
 
