@@ -29,7 +29,7 @@ const ImageCard = () => {
                !Loading && images.length === 0 && <h2 className="text-center text-green-400 font-bold ms-auto text-6xl mt-32">Not Found Image</h2>
            }
           {Loading ? <h2 className="text-center text-green-400 font-bold ms-auto text-6xl mt-32">wait...</h2> :
-           <div className="grid grid-cols-3 gap-4">
+           <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
                {
                    images.map(image =><ImageCardDetails key={image.id} image={image}></ImageCardDetails>)
                }

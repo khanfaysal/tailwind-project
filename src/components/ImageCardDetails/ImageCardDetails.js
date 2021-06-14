@@ -5,29 +5,29 @@ const ImageCardDetails = (props) => {
     const tagsSplit = props.image.tags.split(',')
     return (
         <>
-        <div className="max-w-sm rounded overflow-hidden shadow-lg">
-            <img src={webformatURL} alt="" className="w-full" />
+        <div className="max-w-sm rounded overflow-hidden shadow-xl">
+            <img src={webformatURL} alt="" className="w-full object-cover object-center" />
             <div className="px-6 py-4">
                 <div className="text-green-400 text-xl font-bold capitalize mb-2">
                     photo By {user}
                 </div>
                 <ul>
-                    <li><strong>Views:</strong>
+                    <li><strong>Views:</strong>&nbsp;
                      {views}
                     </li>  
                 </ul>
                 <ul>
-                    <li><strong>Likes:</strong>
+                    <li><strong>Likes:</strong>&nbsp;
                     {likes}
                     </li>
                 </ul>
                 <ul>
-                    <li><strong>Comments:</strong>
+                    <li><strong>Comments:</strong>&nbsp;
                     {comments}
                     </li>
                 </ul>
                 <ul>
-                    <li><strong>Downloads:</strong>
+                    <li><strong>Downloads:</strong>&nbsp;
                     {downloads}
                     </li> 
                 </ul>
@@ -35,7 +35,7 @@ const ImageCardDetails = (props) => {
              <div className="px-6 py-4">
                 {
                     tagsSplit.map(tag =>(
-                        <span key={props.image.id} className="inline-block bg-gray-200 rounded-full px-3 py-1 m-2 text-gray-700 text-sm font-semibold mr-2">
+                        <span key={props.image.id} className="inline-block bg-green-200 rounded-full px-3 py-1 m-2 text-black text-sm font-semibold mr-2">
                             #{tag}
                         </span>
                     ))
