@@ -6,7 +6,7 @@ const ImageCardDetails = (props) => {
     return (
         <>
         <div className="max-w-sm rounded overflow-hidden shadow-xl">
-            <img src={webformatURL} alt="" className="w-full object-cover object-center" />
+            <img src={webformatURL} alt="" className="md:w-full object-cover object-center" />
             <div className="px-6 py-4">
                 <div className="text-green-400 text-xl font-bold capitalize mb-2">
                     photo By {user}
