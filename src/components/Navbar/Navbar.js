@@ -1,22 +1,33 @@
-import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Disclosure, Menu, Transition } from "@headlessui/react";
+import React, { Fragment, useContext, useState} from "react";
+import { Link } from "react-router-dom";
+import DarkModeToggle from "react-dark-mode-toggle";
+import { context } from "../../App";
+
+
 
 const NavBar = () => {
   const navigation = [
-    { name: 'Home', href: '/', current: false },
-    { name: 'Photos', href: '/', current: false },
-    { name: 'Illustrations', href: '/', current: false },
-    { name: 'Videos', href: '/', current: false },
+    { name: "Home", href: "/", current: false },
+    { name: "Photos", href: "/", current: false },
+    { name: "Illustrations", href: "/", current: false },
+    { name: "Videos", href: "/", current: false },
     // { name: 'Projects', href: '/', current: false },
     // { name: 'Calendar', href: '/', current: false },
-  ]
-  
+  ];
+
   function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
+    return classes.filter(Boolean).join(" ");
   }
+  const {isDarkMode, setIsDarkMode} = useContext(context);
+
+  const handleDarkMode = () =>{
+    setIsDarkMode(!isDarkMode);
+    localStorage.setItem('dark-mode', !isDarkMode);
+  }
+
   return (
     <>
       <Disclosure as="nav" className="bg-gray-800 sticky top-0 z-50 shadow-lg">
@@ -29,9 +40,17 @@ const NavBar = () => {
                   <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                     <span className="sr-only">Open main menu</span>
                     {open ? (
-                      <FontAwesomeIcon icon={faTimes} className="block h-6 w-6" aria-hidden="true" />
+                      <FontAwesomeIcon
+                        icon={faTimes}
+                        className="block h-6 w-6"
+                        aria-hidden="true"
+                      />
                     ) : (
-                      <FontAwesomeIcon icon={faBars} className="block h-6 w-6" aria-hidden="true" />
+                      <FontAwesomeIcon
+                        icon={faBars}
+                        className="block h-6 w-6"
+                        aria-hidden="true"
+                      />
                     )}
                   </Disclosure.Button>
                 </div>
@@ -42,10 +61,9 @@ const NavBar = () => {
                       src="https://i.ibb.co/nw7WTT1/image.png"
                       alt="logo"
                     /> */}
-                    <h6 className='text-green-400 text-4xl font-bold'>Pixel</h6>
+                    <h6 className="text-green-400 text-4xl font-bold">Pixel</h6>
                     <div className="hidden lg:block h-8 w-auto flex items-center text-white">
-                      
-                       {/* <h6 className='text-green-400 text-4xl font-bold'>Pixel</h6> */}
+                      {/* <h6 className='text-green-400 text-4xl font-bold'>Pixel</h6> */}
                     </div>
                   </div>
                   <div className="hidden sm:block sm:ml-6">
@@ -55,10 +73,12 @@ const NavBar = () => {
                           key={item.name}
                           to={item.href}
                           className={classNames(
-                            item.current ? 'bg-gray-900 text-white uppercase' : 'text-gray-300 hover:bg-gray-700 hover:text-white uppercase',
-                            'px-3 py-2 rounded-md text-sm font-medium'
+                            item.current
+                              ? "bg-gray-900 text-white uppercase"
+                              : "text-gray-300 hover:bg-gray-700 hover:text-white uppercase",
+                            "px-3 py-2 rounded-md text-sm font-medium"
                           )}
-                          aria-current={item.current ? 'page' : undefined}
+                          aria-current={item.current ? "page" : undefined}
                         >
                           {item.name}
                         </Link>
@@ -71,8 +91,8 @@ const NavBar = () => {
                   <Menu as="div" className="ml-3 relative">
                     {({ open }) => (
                       <>
-                        <div>
-                          <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                        <div className='flex items-center'>
+                          <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white mr-3">
                             <span className="sr-only">Open user menu</span>
                             <img
                               className="h-8 w-8 rounded-full"
@@ -80,6 +100,12 @@ const NavBar = () => {
                               alt=""
                             />
                           </Menu.Button>
+                            <DarkModeToggle
+                            onChange={handleDarkMode}
+                            checked={isDarkMode}
+                            size={60}
+                            speed={1.6}
+                          />
                         </div>
                         <Transition
                           show={open}
@@ -90,9 +116,7 @@ const NavBar = () => {
                           leave="transition ease-in duration-75"
                           leaveFrom="transform opacity-100 scale-100"
                           leaveTo="transform opacity-0 scale-95"
-                        >
-                          
-                        </Transition>
+                        ></Transition>
                       </>
                     )}
                   </Menu>
@@ -107,10 +131,12 @@ const NavBar = () => {
                     key={item.name}
                     to={item.href}
                     className={classNames(
-                      item.current ? 'bg-gray-900 text-white uppercase' : 'text-gray-300 hover:bg-gray-700 hover:text-white uppercase',
-                      'block px-3 py-2 rounded-md text-base font-medium'
+                      item.current
+                        ? "bg-gray-900 text-white uppercase"
+                        : "text-gray-300 hover:bg-gray-700 hover:text-white uppercase",
+                      "block px-3 py-2 rounded-md text-base font-medium"
                     )}
-                    aria-current={item.current ? 'page' : undefined}
+                    aria-current={item.current ? "page" : undefined}
                   >
                     {item.name}
                   </Link>

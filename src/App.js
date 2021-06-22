@@ -1,5 +1,5 @@
 import './App.css';
-import React from "react";
+import React, { createContext, useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,10 +7,20 @@ import {
 } from "react-router-dom";
 import Home from "../src/components/Home/Home";
 
+export const context = createContext();
+
 
 function App() {
+
+  const preStore = localStorage.getItem('dark-mode') || "false";
+  const [isDarkMode, setIsDarkMode] = useState(JSON.parse(preStore));
+
+  useEffect(()=>{
+    window.document.body.className = (isDarkMode?"dark-mode":"light-mode");
+  }, [isDarkMode])
+
   return (
-    <>
+    <context.Provider value={{isDarkMode, setIsDarkMode}}>
       <Router>
         <Switch>
           <Route exact path = '/'>
@@ -18,7 +28,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
-    </>
+    </context.Provider>
   );
 }
 
