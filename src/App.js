@@ -6,6 +6,7 @@ import {
   Route
 } from "react-router-dom";
 import Home from "../src/components/Home/Home";
+import CountDown from './components/countDown/CountDown';
 
 export const context = createContext();
 
@@ -25,6 +26,9 @@ function App() {
         <Switch>
           <Route exact path = '/'>
             <Home></Home>
+          </Route>
+          <Route exact path = '/count'>
+            <CountDown />
           </Route>
         </Switch>
       </Router>
